@@ -26,7 +26,6 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
 
   EnumGender selectedGender;
-  //초기값 설정, 하드코딩은 하면 안되니까.
   int height = 180;
   int weight = 60;
   int age = 30;
@@ -41,9 +40,11 @@ class _InputPageState extends State<InputPage> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Expanded(child: Row(
+            Expanded(
+                child: Row(
               children: <Widget>[
-                Expanded(child: ReuseableCard(
+                Expanded(
+                  child: ReuseableCard(
                   colour: selectedGender==EnumGender.male ? kActiveCardColour : kInactiveCardColour,
                   cardChild: IconContent(icon: FontAwesomeIcons.mars, label: "남자",),
                   onPress: (){
@@ -52,14 +53,15 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                 ),),
-                Expanded(child: ReuseableCard(
-                  onPress: (){
-                    setState(() {
-                      selectedGender=EnumGender.female;
-                    });
-                  },
+                Expanded(
+                  child: ReuseableCard(
                   colour: selectedGender==EnumGender.female ? kActiveCardColour : kInactiveCardColour,
                   cardChild: IconContent(icon: FontAwesomeIcons.venus, label: "여자",),
+                    onPress: (){
+                      setState(() {
+                        selectedGender=EnumGender.female;
+                      });
+                    },
                 ),),
               ],
             )),
@@ -67,7 +69,6 @@ class _InputPageState extends State<InputPage> {
               colour: kInactiveCardColour,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-
                 children: <Widget>[
                   Text('키',style: kLabelTextStyle,),
                   Row(
@@ -102,7 +103,8 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),),
-            Expanded(child: Row(
+            Expanded(
+                child: Row(
               children: <Widget>[
                 Expanded(child: ReuseableCard(
                   colour: kInactiveCardColour,
@@ -173,7 +175,7 @@ class _InputPageState extends State<InputPage> {
                   ),),
               ],
             )),
-            BottomButton(buttonTItle: "계산하기",
+            BottomButton(buttonTItle: "결과보기",
               onTap: (){
               CalculatorBrain calc = CalculatorBrain(weight: weight, height: height);
               Navigator.push(context, MaterialPageRoute(builder: (context)=>

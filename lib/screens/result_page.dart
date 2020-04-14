@@ -26,7 +26,7 @@ class ResultsPages extends StatelessWidget {
         children: <Widget>[
             Expanded(
               child: Container(
-          child: Text('BMI 결과', style: kTitleTextStyle,),
+          child: Center(child: Text('BMI 결과', style: kTitleTextStyle,)),
       ),
             ),
           Expanded(
@@ -47,7 +47,8 @@ class ResultsPages extends StatelessWidget {
               ),
             ),
           ),
-          BottomButton(onTap: (){
+          BottomButton(
+              onTap: (){
             Navigator.pop(context);
           }, buttonTItle: '다시하기'),
         ],
